@@ -19,6 +19,7 @@ const AuthState  = (props) => {
 
     let local;
     useEffect(()=>{
+        // eslint-disable-next-line
         local = localStorage.getItem('token');
         if(local) {
             usuarioAutenticado(local);
@@ -98,6 +99,7 @@ const AuthState  = (props) => {
     }
 
     const iniciarSesion = async (datos) => {
+
         try{
             const respuesta = await ClienteAxios.post('/api/auth', datos);
             console.log(respuesta.data.token);

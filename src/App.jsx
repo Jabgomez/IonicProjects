@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -31,22 +31,53 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Proyectos from './pages/Proyectos';
 import Register from './pages/Register';
+import Tareas from './pages/Tareas';
+import NuevoProyecto from './pages/NuevoProyecto';
+import EditarProyecto from './pages/EditarProyecto';
+import NuevaTarea from './pages/NuevaTarea';
+
+import HideRoute from './components/hinder/HideRoute';
+import RedirectAuth from './components/hinder/RedirectAuth';
+
+//Context
+import AuthState from './context/autenticacion/authState'
+import AlertaState from './context/alertas/alertaState'
+import ProyectoState from './context/proyectos/proyectoState'
+import TareaState from './context/tareas/tareaState'
+import EditarTarea from './pages/EditarTarea';
+import Perfil from './pages/Perfil';
+
 
 const App = () => {
 
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/Login" component={Login} exact />
-            <Route path="/Home" component={Home} exact />
-            <Route path="/Register" component={Register} exact />
-            <Route path="/Proyectos" component={Proyectos} exact />
-            <Redirect from="/" to="/Home" exact />
-          </IonRouterOutlet>
-        </IonSplitPane>
+        <AlertaState>
+          <AuthState>
+            <ProyectoState>
+              <TareaState>
+                <IonSplitPane contentId="main">
+                  <Menu/>
+                  <IonRouterOutlet id="main">
+                    <RedirectAuth path="/Login" component={Login} exact />
+                    <RedirectAuth path="/Home" component={Home} exact />
+                    <RedirectAuth path="/Register" component={Register} exact />
+                    <HideRoute path="/Proyectos" component={Proyectos} exact />
+                    <HideRoute path="/Tareas" component={Tareas} exact />
+                    <HideRoute path="/NuevoProyecto" component={NuevoProyecto} exact />
+                    <HideRoute path="/EditarProyecto" component={EditarProyecto} exact />
+                    <HideRoute path="/NuevaTarea" component={NuevaTarea} exact />
+                    <HideRoute path="/EditarTarea" component={EditarTarea} exact />
+                    <HideRoute path="/Perfil" component={Perfil} exact />
+
+                    <Redirect from="/" to="/Home" exact />
+                  </IonRouterOutlet>
+                </IonSplitPane>
+              </TareaState>
+            </ProyectoState>
+          </AuthState>
+        </AlertaState>
       </IonReactRouter>
     </IonApp>
   );

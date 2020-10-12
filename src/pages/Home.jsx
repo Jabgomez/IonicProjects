@@ -34,13 +34,13 @@ const Home = () => {
                 <IonGrid className="ion-margin">
                     <IonRow>
                         <IonCol>
-                            <IonButton routerLink="/Login" expand="full" shape="round" className="btn" color="dark">
+                            <IonButton onClick={()=>{window.location = '/Login'}} expand="full" shape="round" className="btn" color="dark">
                                     <IonIcon slot="start" icon={logIn} />
                                     <p>Ingresar</p>         
                             </IonButton>  
                         </IonCol>
                         <IonCol>
-                            <IonButton routerLink="/Register" expand="full" shape="round" className="btn" color="light">
+                            <IonButton onClick={()=>{window.location = '/Register'}} expand="full" shape="round" className="btn" color="light">
                                 <IonIcon slot="start" icon={key} />
                                 <p>Registro</p> 
                             </IonButton>

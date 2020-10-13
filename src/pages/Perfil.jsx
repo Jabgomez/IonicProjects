@@ -51,6 +51,7 @@ const Perfil = () => {
         event: undefined
     })
 
+
     //Funcion para enviar datos del componente hijo al padre (Popover)
     const handlePopover = (open, event) => {
         setShowPopover({open: open, event: event})
@@ -73,7 +74,6 @@ const Perfil = () => {
     Rday = fechaRegistro.getDate().toString();
     Rmonth = fechaRegistro.getMonth().toString();
     Ryear = fechaRegistro.getFullYear().toString();
-    console.log(Ryear);
 
     if(usuario.fechaNac){
         const fechaNacimiento = new Date(usuario.fechaNac);
@@ -102,9 +102,17 @@ const Perfil = () => {
                 <IonCard>
                     <IonCardHeader className="ion-text-center avatar">
                         <div className="contenedor">
-                            <IonAvatar>
-                                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
-                            </IonAvatar>
+                            
+                            {
+                                usuario.avatar ? 
+                                    <IonAvatar>
+                                        <img src={`/assets/img/png/${usuario.avatar}.png`} alt=""/>
+                                    </IonAvatar>
+                                : 
+                                    <IonAvatar>
+                                        <img src="/assets/img/png/robot-01.png" alt=""/>
+                                    </IonAvatar>
+                            }
                         </div> 
                     </IonCardHeader>
                     <IonCardContent>

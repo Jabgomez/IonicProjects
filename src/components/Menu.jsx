@@ -8,7 +8,8 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote
+  IonNote,
+  IonAvatar
 } from '@ionic/react';
 
 import { 
@@ -86,6 +87,18 @@ const Menu = () => {
           {
             usuario ? 
               <>
+                <div className="contenedor ion-padding">
+                  {
+                    usuario.avatar ? 
+                        <IonAvatar >
+                            <img src={`/assets/img/png/${usuario.avatar}.png`} alt=""/>
+                        </IonAvatar>
+                    : 
+                        <IonAvatar >
+                            <img src="/assets/img/png/robot-01.png" alt=""/>
+                        </IonAvatar>
+                  }
+                </div>
                 <IonListHeader><span>Hola, &nbsp;</span>{usuario.nombre}</IonListHeader>
                 <IonNote>{usuario.email}</IonNote>
               </>

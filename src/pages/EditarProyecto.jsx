@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState, useCallback} from 'react';
-import {NavContext} from '@ionic/react';
+import {IonBackButton, NavContext} from '@ionic/react';
 
 import { 
     IonContent,
@@ -7,7 +7,6 @@ import {
     IonPage,
     IonToolbar,
     IonButtons,
-    IonMenuButton,
     IonCol,
     IonItem,
     IonLabel,
@@ -69,6 +68,8 @@ const EditarProyecto = () => {
         } else {
             redirect();
         }
+
+        //eslint-disable-next-line
     },[]);
 
     //registrar cambios en el state
@@ -128,7 +129,7 @@ const EditarProyecto = () => {
             <IonHeader className="ion-no-border">
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonMenuButton></IonMenuButton>
+                        <IonBackButton defaultHref="/Proyectos"></IonBackButton>
                     </IonButtons>
                     Editar proyecto
                     <IonButtons slot="end">

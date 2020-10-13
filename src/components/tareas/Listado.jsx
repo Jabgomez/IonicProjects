@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react';
-import {NavContext} from '@ionic/react';
 
 import { 
     IonList, 
@@ -20,7 +19,6 @@ import './Listado.scss';
 
 //Context
 import tareaContext from '../../context/tareas/tareaContext'
-import proyectoContext from '../../context/proyectos/proyectoContext'
 
 const Listado = ({tareasProyecto}) => {
     //obtener el context de las tareas

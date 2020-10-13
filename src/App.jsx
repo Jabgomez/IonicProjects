@@ -35,6 +35,9 @@ import Tareas from './pages/Tareas';
 import NuevoProyecto from './pages/NuevoProyecto';
 import EditarProyecto from './pages/EditarProyecto';
 import NuevaTarea from './pages/NuevaTarea';
+import EditarTarea from './pages/EditarTarea';
+import Perfil from './pages/Perfil';
+import EditarUsuario from './pages/EditarUsuario';
 
 import HideRoute from './components/hinder/HideRoute';
 import RedirectAuth from './components/hinder/RedirectAuth';
@@ -44,8 +47,8 @@ import AuthState from './context/autenticacion/authState'
 import AlertaState from './context/alertas/alertaState'
 import ProyectoState from './context/proyectos/proyectoState'
 import TareaState from './context/tareas/tareaState'
-import EditarTarea from './pages/EditarTarea';
-import Perfil from './pages/Perfil';
+import UsuarioState from './context/usuarios/usuarioState'
+
 
 
 const App = () => {
@@ -55,27 +58,30 @@ const App = () => {
       <IonReactRouter>
         <AlertaState>
           <AuthState>
-            <ProyectoState>
-              <TareaState>
-                <IonSplitPane contentId="main">
-                  <Menu/>
-                  <IonRouterOutlet id="main">
-                    <RedirectAuth path="/Login" component={Login} exact />
-                    <RedirectAuth path="/Home" component={Home} exact />
-                    <RedirectAuth path="/Register" component={Register} exact />
-                    <HideRoute path="/Proyectos" component={Proyectos} exact />
-                    <HideRoute path="/Tareas" component={Tareas} exact />
-                    <HideRoute path="/NuevoProyecto" component={NuevoProyecto} exact />
-                    <HideRoute path="/EditarProyecto" component={EditarProyecto} exact />
-                    <HideRoute path="/NuevaTarea" component={NuevaTarea} exact />
-                    <HideRoute path="/EditarTarea" component={EditarTarea} exact />
-                    <HideRoute path="/Perfil" component={Perfil} exact />
+            <UsuarioState>
+              <ProyectoState>
+                <TareaState>
+                  <IonSplitPane contentId="main">
+                    <Menu/>
+                    <IonRouterOutlet id="main">
+                      <RedirectAuth path="/Login" component={Login} exact />
+                      <RedirectAuth path="/Home" component={Home} exact />
+                      <RedirectAuth path="/Register" component={Register} exact />
+                      <HideRoute path="/Proyectos" component={Proyectos} exact />
+                      <HideRoute path="/Tareas" component={Tareas} exact />
+                      <HideRoute path="/NuevoProyecto" component={NuevoProyecto} exact />
+                      <HideRoute path="/EditarProyecto" component={EditarProyecto} exact />
+                      <HideRoute path="/NuevaTarea" component={NuevaTarea} exact />
+                      <HideRoute path="/EditarTarea" component={EditarTarea} exact />
+                      <HideRoute path="/Perfil" component={Perfil} exact />
+                      <HideRoute path="/EditarUsuario" component={EditarUsuario} exact />
 
-                    <Redirect from="/" to="/Home" exact />
-                  </IonRouterOutlet>
-                </IonSplitPane>
-              </TareaState>
-            </ProyectoState>
+                      <Redirect from="/" to="/Home" exact />
+                    </IonRouterOutlet>
+                  </IonSplitPane>
+                </TareaState>
+              </ProyectoState>
+            </UsuarioState>
           </AuthState>
         </AlertaState>
       </IonReactRouter>
